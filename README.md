@@ -25,6 +25,10 @@
 
 <!-- Testing? -->
 
+## Packages/Languages
+
+
+
 ## License
 
 MIT License
@@ -54,3 +58,25 @@ SOFTWARE.
 For questions, contact me via <a href="mailto: devinlwulf@gmail.com">email</a>.
 
 Follow me on <a href="https://github.com/wulfsounds">Github</a>.
+
+-------------------------------------
+
+## <img src="https://64.media.tumblr.com/tumblr_mdghlnkX3f1qdtfd6o1_400.gif" alt="hyrule-crest" width="25"/> **Quest Items** <img src="https://64.media.tumblr.com/tumblr_mdghlnkX3f1qdtfd6o1_400.gif" alt="hyrule-crest" width="25"/>
+
+🧚🏻 Hey! Listen!
+
+- Begin app.js build, test.
+- Once populated, polish.
+- format everthing.
+- Compelete README
+- Badges!
+- Screenshots!
+
+## **JavaScript Updates**
+
+## **HTML Updates**
+
+## **CSS Updates**
+
+## **Troubleshooting**
+
