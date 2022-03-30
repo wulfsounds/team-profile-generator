@@ -1,92 +1,92 @@
+// Required Node Packages
 const fs = require("fs");
 const inquirer = require("inquirer");
 const jest = require("jest");
-// const { addListener } = require("process");
 
+// Required /lib script files
 const Employee = require("./lib/employee.js");
 const Engineer = require("./lib/engineer.js");
 const Intern = require("./lib/intern.js");
 const Manager = require("./lib/manager.js");
 
-const employees = [];
+// Holds all team members in an Array.
+const employeeArr = [];
 
-function addMember() {
+// Executional functions go here
+createTeam();
+
+// This function executes a prompt to acquire information about added team members then assigns that information with the role selected
+function createTeam() {
+	console.log("Let's Build a Team!");
 	inquirer
 		.prompt([
 			{
-				statement: "Let's build a team!",
-				question: `What is the team member's name?`,
+				type: "input",
+				message: `What is the team member's name?`,
 				name: "name",
 			},
 			{
-				type: "input",
-				question: "What type of role do they have?",
-				name: "role",
+				type: "list",
+				message: "What type of role do they have?",
 				choices: ["Manager", "Engineer", "Intern"],
+				name: "role",
 			},
 			{
 				type: "input",
-				question: `What is their employee id number?`,
+				message: `What is their employee id number?`,
 				name: "id",
 			},
 		])
-		.then(function (name, role, id) {
-			if (role === "Manager") {
-				addManager();
-			} else if (role === "Engineer") {
-				addEngineer();
-			} else {
-				addIntern();
+		.then(function ({ name, role, id }) {
+			let profile = "";
+			switch (role) {
+				case "Manager":
+					// this.role = role;
+					profile = "office number";
+					break;
+
+				case "Engineer":
+					// this.role = role;
+					profile = "GitHub";
+					break;
+
+				default:
+					// this.role = role;
+					profile = "school";
+					break;
 			}
+			// Additional information is required to complete a profile based on the selected role.
+			inquirer
+				.prompt([
+					{
+						type: "input",
+						message: `what is the ${role}'s ${profile}?`,
+						name: "profile",
+					},
+					{
+						type: "list",
+						message: "Add additional members to you your team?",
+						choices: ["Yes", "No"],
+						name: "addMembers",
+					},
+				])
+				// If additional team members are needed, then repeat function and push additional members to the employeeArr array
+				.then(function ({ addMembers, profile }) {
+					addMembers === "Yes" ? createTeam() : createHtml();
+					switch (role) {
+						case "Manager":
+							newMember = new Manager(name, role, id, profile);
+							break;
+
+						case "Engineer":
+							newMember = new Engineer(name, role, id, profile);
+							break;
+
+						default:
+							newMember = new Intern(name, role, id, profile);
+							break;
+					}
+					employeeArr.push(newMember);
+				});
 		});
-}
-
-
-
-function addManager() {
-	inquirer.prompt([
-		{
-			type: "input",
-			question: `What is the manager's email?`,
-			name: "email",
-		},
-		{
-			type: "input",
-			question: `What is the manager's office number?`,
-			name: "office",
-		}
-	])
-    .then(function (email, office) {
-
-    })
-}
-
-function addEngineer() {
-	inquirer.prompt([
-		{
-			type: "input",
-			question: `What is the Engineer's email?`,
-			name: "email",
-		},
-		{
-			type: "input",
-			question: `What is the Engineer's GitHub?`,
-			name: "github",
-		},
-	]);
-}
-
-function addIntern() {
-	inquirer.prompt([
-		{
-			type: "input",
-			question: `What is the interns's email?`,
-			name: "email",
-		},
-		{
-			type: "input",
-			question: `What school does the intern attend?`,
-			name: "school",
-		},
-	]);
 }
