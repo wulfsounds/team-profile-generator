@@ -108,3 +108,5 @@ node_modules
 .DS_Store
 
 /Instructions
+
+package-lock.json

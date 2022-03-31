@@ -92,5 +92,3 @@ function createTeam() {
 				});
 		});
 }
-
-function createHtml() {}
