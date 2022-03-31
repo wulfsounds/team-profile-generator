@@ -36,22 +36,24 @@ function createTeam() {
 				message: `What is their employee id number?`,
 				name: "id",
 			},
+			{
+				type: "input",
+				message: `What is their email address?`,
+				name: "email",
+			},
 		])
-		.then(function ({ name, role, id }) {
+		.then(function ({ name, role, id, email }) {
 			let profile = "";
 			switch (role) {
 				case "Manager":
-					// this.role = role;
 					profile = "office number";
 					break;
 
 				case "Engineer":
-					// this.role = role;
 					profile = "GitHub";
 					break;
 
 				default:
-					// this.role = role;
 					profile = "school";
 					break;
 			}
@@ -72,21 +74,23 @@ function createTeam() {
 				])
 				// If additional team members are needed, then repeat function and push additional members to the employeeArr array
 				.then(function ({ addMembers, profile }) {
-					addMembers === "Yes" ? createTeam() : createHtml();
 					switch (role) {
 						case "Manager":
-							newMember = new Manager(name, role, id, profile);
+							newMember = new Manager(name, id, email, profile);
 							break;
 
 						case "Engineer":
-							newMember = new Engineer(name, role, id, profile);
+							newMember = new Engineer(name, id, email, profile);
 							break;
 
 						default:
-							newMember = new Intern(name, role, id, profile);
+							newMember = new Intern(name, id, email, profile);
 							break;
 					}
 					employeeArr.push(newMember);
+					addMembers === "Yes" ? createTeam() : createHtml(newMember);
 				});
 		});
 }
+
+function createHtml() {}
