@@ -2,6 +2,7 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const jest = require("jest");
+const create = require("createHTML")
 
 // Required /lib script files
 const Employee = require("./lib/employee.js");
@@ -13,7 +14,10 @@ const Manager = require("./lib/manager.js");
 const employeeArr = [];
 
 // Executional functions go here
-createTeam();
+async function init() {
+	createTeam();	
+}
+
 
 // This function executes a prompt to acquire information about added team members then assigns that information with the role selected
 function createTeam() {
