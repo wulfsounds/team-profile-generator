@@ -4,7 +4,7 @@ const inquirer = require("inquirer");
 const jest = require("jest");
 
 // Required /lib script files
-const Employee = require("./lib/employee.js")
+const Employee = require("./lib/employee.js");
 const Engineer = require("./lib/engineer.js");
 const Intern = require("./lib/intern.js");
 const Manager = require("./lib/manager.js");
@@ -45,12 +45,12 @@ function createHTML() {
         <h2 id="subheader">meet the dev team</h2>
 		</div>
 		<main>
-			<section>`
+			<section>`;
 	fs.writeFile("./team.html", html, function (err) {
 		if (err) {
 			console.error(err);
-		} 
-	createTeam();
+		}
+		createTeam();
 	});
 }
 
@@ -78,7 +78,7 @@ function createTeam() {
 			{
 				type: "input",
 				message: `What is their email address?`,
-				name: "email"
+				name: "email",
 			},
 		])
 		.then(function ({ name, role, id, email }) {
@@ -128,10 +128,9 @@ function createTeam() {
 							break;
 					}
 					employeeArr.push(team);
-					hiredHTML(team)
-					.then(function () {
+					hiredHTML(team).then(function () {
 						addMembers === "Yes" ? createTeam() : footer();
-					})
+					});
 				});
 		});
 }
@@ -165,12 +164,12 @@ function hiredHTML(hireTeam) {
                         </div>
                     </div>
                 </div>`;
-                    console.log("Manager Added")
+					console.log("Manager Added");
 					break;
 
 				case "Engineer":
 					let gitHub = hireTeam.getGitHub();
-                    data = `
+					data = `
                     <div class="card mb-3 border" style="max-width: 18rem;">
                     <div class="card-header">
                         <h2>${name}</h2>
@@ -186,12 +185,12 @@ function hiredHTML(hireTeam) {
                         </div>
                     </div>
                 </div>`;
-                    console.log("Engineer Added")
-                    break;
+					console.log("Engineer Added");
+					break;
 
 				case "Intern":
 					let school = hireTeam.getSchool();
-                    data = `
+					data = `
                     <div class="card mb-3 border" style="max-width: 18rem;">
                     <div class="card-header">
                         <h2>${name}</h2>
@@ -207,19 +206,21 @@ function hiredHTML(hireTeam) {
                         </div>
                     </div>
                 </div>`;
-                    console.log("Intern Added")
-                    break;
+					console.log("Intern Added");
+					break;
 			}
-		} catch { console.error(err) }
-        fs.appendFile("./team.html", data, (err) => {
-            (err) ? reject(err) : resolve();
-        })
+		} catch {
+			console.error(err);
+		}
+		fs.appendFile("./team.html", data, (err) => {
+			err ? reject(err) : resolve();
+		});
 	});
 }
 
 // Completes the HTML with a footer and closing tags
 function footer() {
-    const footer = `
+	const footer = `
 			</section>
 		</main>
 		<footer>
@@ -228,9 +229,9 @@ function footer() {
 	</body>
 
 	</html>`;
-    fs.appendFile("./team.html", footer, (err) => {
-        (err) ? reject(err) : console.log("Success!");
-    });
+	fs.appendFile("./team.html", footer, (err) => {
+		err ? reject(err) : console.log("Success!");
+	});
 }
 
 init();
