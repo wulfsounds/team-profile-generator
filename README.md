@@ -31,7 +31,12 @@ And that's it! Just follow the prompt in the command line by inputing the inform
 
 ## Usage
 
-<!-- Add Screenshots and video here -->
+<img src="./src/team-screenshot.jpg" width=750px />
+
+Click the link for a Demo Video:
+
+https://drive.google.com/file/d/1GoaJnLGboXRW5dF-vnOy2FGr4sU0oqDO/view
+
 
 
 ## Packages/Languages
@@ -39,7 +44,7 @@ And that's it! Just follow the prompt in the command line by inputing the inform
 
  ![badge](https://badges.aleen42.com/src/node.svg)
  ![badge](https://badges.aleen42.com/src/jest_2.svg)
- 
+
  ![badge](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ## License
