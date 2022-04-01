@@ -4,6 +4,7 @@ const inquirer = require("inquirer");
 const jest = require("jest");
 
 // Required /lib script files
+const Employee = require("./lib/employee.js")
 const Engineer = require("./lib/engineer.js");
 const Intern = require("./lib/intern.js");
 const Manager = require("./lib/manager.js");
@@ -19,24 +20,32 @@ function init() {
 // Creates the beginning document of the HTML.
 function createHTML() {
 	const html = `
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="./src/bootstrap-reboot.css" />
-	<link rel="stylesheet" href="./src/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="./src/main.css" />
-	<script type="text/javascript" src="./app.js"></script>
-	<title>Team Profile Generator</title>
-    </head>
-
-    <body>
-        <header>
-            <h1>My Team</h1>
-        </header>`
+	<!DOCTYPE html>
+	<html lang="en">
+	
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./src/bootstrap-reboot.css" />
+		<link rel="stylesheet" href="./src/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="./src/main.css" />
+		<link rel="stylesheet" href="https://use.typekit.net/omc6uwd.css">
+		<script type="text/javascript" src="./app.js"></script>
+		<title>WulfSounds</title>
+	</head>
+	
+	<body>
+		<header>
+			<h1 id="title-main">wulf&co.</h1>
+			<h1 id="title-second">wulf&co.</h1>
+			<!-- <h1 id="title-fourth">WulfSounds</h1> -->
+		</header>
+		<div class="container">
+        <h2 id="subheader">meet the dev team</h2>
+		</div>
+		<main>
+			<section>`
 	fs.writeFile("./team.html", html, function (err) {
 		if (err) {
 			console.error(err);
@@ -69,7 +78,7 @@ function createTeam() {
 			{
 				type: "input",
 				message: `What is their email address?`,
-				name: "email",
+				name: "email"
 			},
 		])
 		.then(function ({ name, role, id, email }) {
@@ -104,6 +113,7 @@ function createTeam() {
 				])
 				// If additional team members are needed, then repeat function and push additional members to the employeeArr array
 				.then(function ({ addMembers, profile }) {
+					let team; // email undefined here
 					switch (role) {
 						case "Manager":
 							team = new Manager(name, id, email, profile);
@@ -127,18 +137,18 @@ function createTeam() {
 }
 
 // Creates HTML for employee cards and inputs the data.
-function hiredHTML(team) {
-	return new Promise((resolve, reject) => {
+function hiredHTML(hireTeam) {
+	return new Promise(function (resolve, reject) {
 		// gathers data from user input
-		const name = team.getName();
-		const role = team.getRole();
-		const id = team.getId();
-		const email = team.getEmail();
+		const name = hireTeam.getName();
+		const role = hireTeam.getRole();
+		const id = hireTeam.getId();
+		const email = hireTeam.getEmail();
 		// Input Manager data into HTML
 		try {
 			switch (role) {
 				case "Manager":
-					let office = team.getOffice();
+					let office = hireTeam.getOffice();
 					data = `
                     <div class="card mb-3 border" style="max-width: 18rem;">
                     <div class="card-header">
@@ -159,7 +169,7 @@ function hiredHTML(team) {
 					break;
 
 				case "Engineer":
-					let gitHub = team.getGitHub();
+					let gitHub = hireTeam.getGitHub();
                     data = `
                     <div class="card mb-3 border" style="max-width: 18rem;">
                     <div class="card-header">
@@ -180,7 +190,7 @@ function hiredHTML(team) {
                     break;
 
 				case "Intern":
-					let school = team.getSchool();
+					let school = hireTeam.getSchool();
                     data = `
                     <div class="card mb-3 border" style="max-width: 18rem;">
                     <div class="card-header">
@@ -210,11 +220,14 @@ function hiredHTML(team) {
 // Completes the HTML with a footer and closing tags
 function footer() {
     const footer = `
-            <footer>
-                <h5>2022 Dev Wulf for SMU Coding Bootcamp | Find this repo on <span><a href="github.com/wulfsounds">GitHub.</a></span></h5>
-            </footer>
-        </body>
-    </html>`;
+			</section>
+		</main>
+		<footer>
+			<h5>2022 Dev Wulf for SMU Coding Bootcamp | Find this repo on <span><a href="github.com/wulfsounds">GitHub.</a></span></h5>
+		</footer>
+	</body>
+
+	</html>`;
     fs.appendFile("./team.html", footer, (err) => {
         (err) ? reject(err) : console.log("Success!");
     });

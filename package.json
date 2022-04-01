@@ -15,5 +15,8 @@
     "inquirer": "^8.2.2",
     "jest": "^27.5.1",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.2.1"
   }
 }
