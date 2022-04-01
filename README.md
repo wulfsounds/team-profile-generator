@@ -1,9 +1,9 @@
-# Team Profile Generator
+# Dev Team Generator
 [![license](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
-<!-- Add descriptions here -->
+The Dev Team Generator is a Node.js command-line application that recieves a user's input about team members and generates a dynamic web application with the populated information.
 
 ## Table of Contents
 
@@ -15,19 +15,32 @@
 
 ## Installation
 
-<!-- Add Installation here -->
+To get started, fork this repo into a text editor, then install the node package into your repo using in the command line.
+
+```bash
+npm install
+```
+
+Once completed, open the JavaScript file titled `app.js` in the command line by right-clilcking and selecting '*Open in Integrated Terminal*' and enter the following:
+
+```bash
+node app.js
+```
+
+And that's it! Just follow the prompt in the command line by inputing the information to your project and the HTML page will generate in the folder you assigned the node package to. It's important to note this application can be ran multiple times and will overwrite the generated HTML everytime. Happy Coding!
 
 ## Usage
 
 <!-- Add Screenshots and video here -->
 
-## Testing
-
-<!-- Testing? -->
 
 ## Packages/Languages
+ Created using Object-Oriented Programming using the following packages:
 
-
+ ![badge](https://badges.aleen42.com/src/node.svg)
+ ![badge](https://badges.aleen42.com/src/jest_2.svg)
+ 
+ ![badge](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ## License
 
@@ -60,23 +73,3 @@ For questions, contact me via <a href="mailto: devinlwulf@gmail.com">email</a>.
 Follow me on <a href="https://github.com/wulfsounds">Github</a>.
 
 -------------------------------------
-
-## <img src="https://64.media.tumblr.com/tumblr_mdghlnkX3f1qdtfd6o1_400.gif" alt="hyrule-crest" width="25"/> **Quest Items** <img src="https://64.media.tumblr.com/tumblr_mdghlnkX3f1qdtfd6o1_400.gif" alt="hyrule-crest" width="25"/>
-
-🧚🏻 Hey! Listen!
-
-- Begin app.js build, test.
-- Once populated, polish.
-- format everthing.
-- Compelete README
-- Badges!
-- Screenshots!
-
-## **JavaScript Updates**
-
-## **HTML Updates**
-
-## **CSS Updates**
-
-## **Troubleshooting**
-
